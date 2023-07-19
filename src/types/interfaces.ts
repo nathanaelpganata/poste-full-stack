@@ -3,7 +3,7 @@ export interface UserType {
   name: string | null | undefined;
   email: string;
   password: string;
-  role: string;
+  role: 'USER' | 'ADMIN' | 'SUPERADMIN';
   accessToken: string;
   posts: PostType[];
 }
@@ -15,4 +15,6 @@ export interface PostType {
   published: boolean;
   authorId: string;
   author: UserType;
+  createdAt: string;
+  updatedAt: string;
 }

@@ -9,6 +9,7 @@ import {
 import { useRouter } from 'next/navigation';
 import { signIn, useSession } from 'next-auth/react';
 import React from 'react';
+import toast from 'react-hot-toast';
 
 interface IProps {
   searchParams?: { [key: string]: string | string[] | undefined };
@@ -46,6 +47,7 @@ const LoginPage = ({ searchParams }: IProps) => {
       password: password.current,
       redirect: false,
     });
+    toast.dismiss();
     if (res?.url) {
       showToast('Logged in successfully', SUCCESS_TOAST);
     } else {
@@ -54,7 +56,7 @@ const LoginPage = ({ searchParams }: IProps) => {
   };
 
   if (session && session.user && session.user.role == 'USER') {
-    router.replace('/user');
+    router.replace('/post');
   } else if (session && session.user && session.user.role == 'ADMIN') {
     router.replace('/admin');
   }

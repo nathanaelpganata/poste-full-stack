@@ -77,14 +77,14 @@ export default function Input({
           aria-describedby={id}
         />
         {LeftIcon && (
-          <div className='absolute top-1/2 left-0 translate-x-1/2 -translate-y-1/2'>
+          <div className='absolute left-0 translate-x-1/2 -translate-y-1/2 top-1/2'>
             <LeftIcon
               className={clsxm('text-lg md:text-xl', leftIconClassName)}
             />
           </div>
         )}
         {RightIcon && (
-          <div className='absolute top-1/2 right-0 -translate-x-1/2 -translate-y-1/2'>
+          <div className='absolute right-0 -translate-x-1/2 -translate-y-1/2 top-1/2'>
             <RightIcon
               className={clsxm('text-lg md:text-xl', rightIconClassName)}
             />
@@ -94,7 +94,7 @@ export default function Input({
       <div className='mt-1'>
         {helperText && <p className='text-xs text-neutral-300'>{helperText}</p>}
         {!hideError && error && (
-          <span className='text-sm text-red-500 flex gap-x-1'>
+          <span className='flex text-sm text-red-500 gap-x-1'>
             <HiExclamationCircle className='text-xl text-red-500' />
             {error?.message as unknown as string}
           </span>

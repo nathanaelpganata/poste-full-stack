@@ -13,7 +13,7 @@ export default withAuth(
       );
     }
     if (
-      req.nextUrl.pathname.startsWith('/user') &&
+      req.nextUrl.pathname.startsWith('/post') &&
       req.nextauth.token?.role !== 'USER'
     ) {
       return NextResponse.rewrite(
@@ -28,4 +28,4 @@ export default withAuth(
   },
 );
 
-export const config = { matcher: ['/user/:path*', '/admin/:path*'] };
+export const config = { matcher: ['/post/:path*', '/admin/:path*'] };

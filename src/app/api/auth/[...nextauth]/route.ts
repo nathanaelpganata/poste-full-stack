@@ -14,35 +14,16 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
-        // const res = await fetch('http://localhost:3000/api/login', {
-        //   method: 'POST',
-        //   headers: { 'Content-Type': 'application/json' },
-        //   body: JSON.stringify({
-        //     email: credentials?.email,
-        //     password: credentials?.password,
-        //   }),
-        // });
-
-        // const user = await res.json();
-        // console.log(user);
-        // if (user) {
-        //   return user;
-        // } else {
-        //   console.log('error');
-        //   return null;
-        // }
         return (
           axios
-            .post(`/login`, {
+            .post(`/auth/login`, {
               email: credentials?.email,
               password: credentials?.password,
             })
             .then((response) => {
-              // console.log(response.data.status);
               return response.data;
             })
             .catch((error) => {
-              console.log(error.response.status);
               throw new Error(error.response.data.message);
             }) || null
         );

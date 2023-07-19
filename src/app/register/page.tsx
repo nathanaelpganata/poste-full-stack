@@ -15,8 +15,8 @@ const RegisterPage = () => {
   const { handleSubmit } = methods;
 
   const onSubmit = async (data: any) => {
-    const res = await axios
-      .post('/user', data)
+    await axios
+      .post('/auth/register', data)
       .then(() => showToast('Account Created Successfully', SUCCESS_TOAST))
       .then(() => router.replace('/login'))
       .catch((err) => showToast(err.response.data.message, DANGER_TOAST));
